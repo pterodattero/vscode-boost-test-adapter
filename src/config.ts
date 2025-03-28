@@ -53,7 +53,7 @@ export async function getConfig(workspaceFolder: vscode.WorkspaceFolder, log: lo
                 return emptyTestConfig;
             }
             const testExe: TestExe = {
-                path: util.detokenizeVariables(cfgTestExe.path)
+                path: util.detokenizeVariables(cfgTestExe.path, workspaceFolder)
             };
 
             if (cfgTestExe.label !== undefined) {
@@ -76,7 +76,7 @@ export async function getConfig(workspaceFolder: vscode.WorkspaceFolder, log: lo
                     log.error(`Settings: cwd must be a string`);
                     return emptyTestConfig;
                 }
-                testExe.cwd = util.detokenizeVariables(cfgTest.cwd);
+                testExe.cwd = util.detokenizeVariables(cfgTest.cwd, workspaceFolder);
             }
 
             if (cfgTest.sourcePrefix !== undefined) {
@@ -92,7 +92,7 @@ export async function getConfig(workspaceFolder: vscode.WorkspaceFolder, log: lo
                     log.error(`Settings: envFile must be a string`, true);
                     return emptyTestConfig;
                 }
-                testExe.envFile = util.detokenizeVariables(cfgTest.envFile);
+                testExe.envFile = util.detokenizeVariables(cfgTest.envFile, workspaceFolder);
             }
 
             if (cfgTest.env !== undefined) {
