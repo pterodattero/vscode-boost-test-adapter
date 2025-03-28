@@ -1,4 +1,4 @@
-# Boost.Test Adapter
+# Boost.Test
 This extension allows you to run your [Boost.Test](https://github.com/boostorg/test) tests
 from the Testing sidebar of VS Code.
 
@@ -17,7 +17,7 @@ from the Testing sidebar of VS Code.
 
 ## Configurations
 ```json
-    "boost-test-adapter-feher.tests": [
+    "boost-test.tests": [
         {
             // Mandatory
             "testExecutables": [
@@ -100,6 +100,7 @@ from the Testing sidebar of VS Code.
 This extension is based on code from these extensions:
 - https://github.com/firoorg/vscode-boost-test-adapter
 - https://github.com/newdigate/vscode-boost-test-adapter.git
+- https://github.com/feher/vscode-boost-test-adapter.git
 
 ## Changelog
 * Update 3.2.3

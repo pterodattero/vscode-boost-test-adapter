@@ -1,21 +1,21 @@
 {
-  "name": "boost-test-adapter-feher",
-  "version": "3.2.5",
-  "displayName": "Boost.Test Adapter",
+  "name": "boost-test-adapter-pterodattero",
+  "version": "3.2.8",
+  "displayName": "Boost.Test",
   "description": "Run or debug your Boost.Test tests in the Sidebar of Visual Studio Code",
   "author": "Gabor Fekete <dev.feheren.fekete@gmail.com>",
   "contributors": [
     "Stefano Della Morte <stefano1996linc@gmail.com>"
   ],
-  "publisher": "feheren-fekete",
+  "publisher": "pterodattero",
   "license": "MIT",
-  "homepage": "https://github.com/feher/vscode-boost-test-adapter",
+  "homepage": "https://github.com/pterodattero/vscode-boost-test-adapter",
   "repository": {
     "type": "git",
-    "url": "https://github.com/feher/vscode-boost-test-adapter.git"
+    "url": "https://github.com/pterodattero/vscode-boost-test-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/feher/vscode-boost-test-adapter/issues"
+    "url": "https://github.com/pterodattero/vscode-boost-test-adapter/issues"
   },
   "categories": [
     "Other"
@@ -55,10 +55,10 @@
   ],
   "contributes": {
     "configuration": {
-      "title": "Boost.Test Adapter",
+      "title": "Boost.Test",
       "properties": {
-        "boost-test-adapter-feher": {
-          "description": "Configuration for Boost.Test Adapter extension",
+        "boost-test": {
+          "description": "Configuration for Boost.Test extension",
           "type": "object",
           "properties": {
             "disabledWorkspaceFolders": {
@@ -139,44 +139,44 @@
     },
     "commands": [
       {
-        "command": "boost-test-adapter-feher.copyTestItemPath",
+        "command": "boost-test.copyTestItemPath",
         "title": "Copy Path"
       },
       {
-        "command": "boost-test-adapter-feher.copyTestItemRelativePath",
+        "command": "boost-test.copyTestItemRelativePath",
         "title": "Copy Relative Path"
       },
       {
-        "command": "boost-test-adapter-feher.copyBoostTestId",
+        "command": "boost-test.copyBoostTestId",
         "title": "Copy Boost.Test ID"
       }
     ],
     "menus": {
       "commandPalette": [
         {
-          "command": "boost-test-adapter-feher.copyTestItemPath",
+          "command": "boost-test.copyTestItemPath",
           "when": "false"
         },
         {
-          "command": "boost-test-adapter-feher.copyTestItemRelativePath",
+          "command": "boost-test.copyTestItemRelativePath",
           "when": "false"
         },
         {
-          "command": "boost-test-adapter-feher.copyBoostTestId",
+          "command": "boost-test.copyBoostTestId",
           "when": "false"
         }
       ],
       "testing/item/context": [
         {
-          "command": "boost-test-adapter-feher.copyTestItemPath",
+          "command": "boost-test.copyTestItemPath",
           "group": "copypath@1"
         },
         {
-          "command": "boost-test-adapter-feher.copyTestItemRelativePath",
+          "command": "boost-test.copyTestItemRelativePath",
           "group": "copypath@2"
         },
         {
-          "command": "boost-test-adapter-feher.copyBoostTestId",
+          "command": "boost-test.copyBoostTestId",
           "group": "copypath@3",
           "when": "testId =~ /^[a-f0-9]+\/[a-f0-9]+\/.+$/"
         }

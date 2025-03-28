@@ -4,8 +4,8 @@ import * as util from './util';
 import { resolve } from 'path';
 
 // IMPORTANT: Use the same name in package.json!
-export const BoosTestAdapterExtensionName = "boost-test-adapter-feher";
-export const BoosTestAdapterConfig = "boost-test-adapter-feher";
+export const BoosTestAdapterExtensionName = "boost-test";
+export const BoosTestAdapterConfig = "boost-test";
 
 export interface TestExe {
     path: string;
