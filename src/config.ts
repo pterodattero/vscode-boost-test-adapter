@@ -23,7 +23,7 @@ export interface TestConfig {
 }
 
 export async function getConfig(workspaceFolder: vscode.WorkspaceFolder, log: logger.MyLogger): Promise<TestConfig> {
-    const cfg = vscode.workspace.getConfiguration(BoosTestAdapterConfig);
+    const cfg = vscode.workspace.getConfiguration(BoosTestAdapterConfig, workspaceFolder.uri);
 
     const disabledWorkspaceFolders = cfg.get<string[]>('disabledWorkspaceFolders');
     if ( Array.isArray( disabledWorkspaceFolders ) && disabledWorkspaceFolders.includes( workspaceFolder.name ) )
