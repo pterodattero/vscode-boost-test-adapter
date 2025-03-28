@@ -54,68 +54,82 @@
     "configuration": {
       "title": "Boost.Test Adapter",
       "properties": {
-        "boost-test-adapter-feher.tests": {
-          "description": "Test configurations.",
-          "type": "array",
-          "items": {
-            "type": "object",
-            "description": "Test configuration.",
-            "properties": {
-              "testExecutables": {
-                "description": "List of test executables.",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "description": "A test executable.",
-                  "properties": {
-                    "path": {
-                      "description": "Absolute or relative path to a test executable.",
-                      "type": "string"
-                    },
-                    "label": {
-                      "description": "Show this label in the test explorer UI instead of the Boost Test module name.",
-                      "type": "string"
+        "boost-test-adapter-feher": {
+          "description": "Configuration for Boost.Test Adapter extension",
+          "type": "object",
+          "properties": {
+            "disabledWorkspaceFolders": {
+              "description": "Disabled workspace folders names in multiroot environment",
+              "type": "array",
+              "items": "string",
+              "default": [],
+              "scope": "window"
+            },
+            "tests": {
+              "description": "Test configurations.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "description": "Test configuration.",
+                "properties": {
+                  "testExecutables": {
+                    "description": "List of test executables.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "A test executable.",
+                      "properties": {
+                        "path": {
+                          "description": "Absolute or relative path to a test executable.",
+                          "type": "string"
+                        },
+                        "label": {
+                          "description": "Show this label in the test explorer UI instead of the Boost Test module name.",
+                          "type": "string"
+                        }
+                      }
                     }
+                  },
+                  "debugConfig": {
+                    "description": "The name of a launch configuration used for debugging.",
+                    "type": "string"
+                  },
+                  "envFile": {
+                    "description": "A simple key=value file with environment variables for running and debugging the tests.",
+                    "type": "string"
+                  },
+                  "env": {
+                    "description": "Environment variables for running and debugging the tests.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "Environment variable.",
+                      "properties": {
+                        "name": {
+                          "description": "Name of the environment variable.",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Value of the environment variable.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "cwd": {
+                    "description": "Working directory for the test executable.",
+                    "type": "string"
+                  },
+                  "sourcePrefix": {
+                    "description": "Used to convert relative source file paths to absolute paths. It's needed only if the test-case file paths are broken in the Test Explorer UI.",
+                    "type": "string"
                   }
                 }
               },
-              "debugConfig": {
-                "description": "The name of a launch configuration used for debugging.",
-                "type": "string"
-              },
-              "envFile": {
-                "description": "A simple key=value file with environment variables for running and debugging the tests.",
-                "type": "string"
-              },
-              "env": {
-                "description": "Environment variables for running and debugging the tests.",
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "description": "Environment variable.",
-                  "properties": {
-                    "name": {
-                      "description": "Name of the environment variable.",
-                      "type": "string"
-                    },
-                    "value": {
-                      "description": "Value of the environment variable.",
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "cwd": {
-                "description": "Working directory for the test executable.",
-                "type": "string"
-              },
-              "sourcePrefix": {
-                "description": "Used to convert relative source file paths to absolute paths. It's needed only if the test-case file paths are broken in the Test Explorer UI.",
-                "type": "string"
-              }
+              "default": [ ],
+              "scope": "resource"
             }
           },
-          "default": [],
           "scope": "resource"
         }
       }

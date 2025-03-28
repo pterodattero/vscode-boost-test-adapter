@@ -65,8 +65,9 @@ export class AdapterManager {
         this.log.info("Reloading tests");
         this.ctrl.items.replace([]);
         for (const [_, adapter] of this.adapters) {
-            await adapter.reload();
-            this.ctrl.items.add(adapter.getTestItem());
+            if (await adapter.reload()) {
+                this.ctrl.items.add(adapter.getTestItem());
+            }
         }
     }
 

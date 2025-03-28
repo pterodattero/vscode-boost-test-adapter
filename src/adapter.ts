@@ -40,25 +40,35 @@ export class BoostTestAdapter {
         });
     }
 
-    async reload(): Promise<void> {
-        await this.updateSettings();
-        await this.load();
+    async reload(): Promise<boolean> {
+        const enabled = await this.updateSettings();
+        if ( enabled ) {
+            await this.load();
+            return true;
+        }
+        return false;
     }
 
-    private async updateSettings(): Promise<void> {
+    private async updateSettings(): Promise<boolean> {
         const release = await this.mutex.acquire();
+        let enabled = false;
         try {
-            await this.updateSettingsUnlocked();
+            enabled = await this.updateSettingsUnlocked();
         } finally {
             release();
+            return enabled;
         }
     }
 
-    private async updateSettingsUnlocked(): Promise<void> {
+    private async updateSettingsUnlocked(): Promise<boolean> {
         this.clearTestExeWatchers();
         this.testExecutables.clear();
 
         const cfg = await config.getConfig(this.workspaceFolder, this.log);
+
+        if (!cfg.enabled) {
+            return false;
+        }
 
         for (const cfgTestExe of cfg.testExes) {
             const testExeTestItemId = this.createTestExeId(cfgTestExe.path);
@@ -69,6 +79,8 @@ export class BoostTestAdapter {
                 cfgTestExe,
                 this.log));
         }
+
+        return true;
     }
 
     getTestItem(): vscode.TestItem {

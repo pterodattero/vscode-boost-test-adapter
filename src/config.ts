@@ -18,19 +18,26 @@ export interface TestExe {
 }
 
 export interface TestConfig {
+    enabled: boolean;
     testExes: TestExe[];
 }
 
 export async function getConfig(workspaceFolder: vscode.WorkspaceFolder, log: logger.MyLogger): Promise<TestConfig> {
+    const cfg = vscode.workspace.getConfiguration(BoosTestAdapterConfig);
+
+    const disabledWorkspaceFolders = cfg.get<string[]>('disabledWorkspaceFolders');
+    if ( Array.isArray( disabledWorkspaceFolders ) && disabledWorkspaceFolders.includes( workspaceFolder.name ) )
+        return { enabled: false, testExes: [] };
+
     const emptyTestConfig: TestConfig = {
+        enabled: true,
         testExes: []
     };
     const testConfig: TestConfig = {
+        enabled: true,
         testExes: []
     };
-
-    const cfg = vscode.workspace.getConfiguration(BoosTestAdapterConfig);
-
+    
     const cfgTests = cfg.get<Record<string, any>[]>('tests');
     if (cfgTests === undefined) {
         log.warn(`Settings: No ${BoosTestAdapterConfig}.tests found.`);
