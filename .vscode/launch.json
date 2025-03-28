@@ -9,9 +9,11 @@
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}"
       ],
+      "sourceMaps": true,
       "outFiles": [
-        "${workspaceFolder}/lib"
-      ]
+        "${workspaceFolder}/lib/**/*.js"
+      ],
+      "preLaunchTask": "npm:watch"
     }
   ]
 }
