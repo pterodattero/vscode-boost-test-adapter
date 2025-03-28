@@ -4,6 +4,9 @@
   "displayName": "Boost.Test Adapter",
   "description": "Run or debug your Boost.Test tests in the Sidebar of Visual Studio Code",
   "author": "Gabor Fekete <dev.feheren.fekete@gmail.com>",
+  "contributors": [
+    "Stefano Della Morte <stefano1996linc@gmail.com>"
+  ],
   "publisher": "feheren-fekete",
   "license": "MIT",
   "homepage": "https://github.com/feher/vscode-boost-test-adapter",
